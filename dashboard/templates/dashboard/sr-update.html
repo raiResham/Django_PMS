@@ -1,0 +1,35 @@
+
+{% extends "dashboard/base_extended.html" %}
+{% block title %}
+<title>Update Story</title>
+{% endblock title%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="row">
+        <div class="col-sm-6 offset-md-3">
+            <div class="content-section">
+        
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group ">
+                        <legend class="mb-3">
+                            <h4>{{story.project}}  </h4>
+                            <span class="badge badge-primary">{{ story.sr_id }}</span>
+                        </legend>
+                        <legend class="border-bottom mb-4">
+                            <span style="font-size: 24px; color: Dodgerblue;">
+                                <i class="fas fa-edit"></i>
+                             </span>
+                            Update an story 
+                        </legend>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
+{% endblock content %}

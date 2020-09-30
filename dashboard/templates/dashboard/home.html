@@ -1,0 +1,49 @@
+
+{% extends "dashboard/base_extended.html" %}
+{% block title %}
+
+<title>Home</title>
+{% endblock title%}
+
+{% block content %}
+
+{% for project in projects %}
+<div class="card">
+	<div class="card-header">
+		<h4><a class="article-title" href="{% url 'project-detail' project.id %}">{{ project.name }} - {{project.code}}</a>
+
+			{% if project.role.code == 0%}
+			<span style="font-size: 24px; color: Tomato;">
+				<i class="fas fa-users-cog" style ="padding-left: 5px"></i>
+			</span>
+			{% endif%}
+
+		</h4>
+
+	</div>
+	<div class="card-body">
+		<p class="card-text"><b>Description</b> : {{ project.description }}</p>
+
+	</div>
+	<div class="card-footer">
+		<span style="font-size: 24px; color: Dodgerblue;">
+			<i class="fas fa-chart-pie"></i>
+		</span>
+		{% for status in project.status_list %}
+		<span class="badge badge-default">{{ status.count }}</span>
+		{% if status.code == 300%}
+		<span class="badge badge-success ">{{status.description}}</span>
+		{% elif status.code == 200%}
+		<span class="badge badge-primary ">{{status.description}}</span>
+		{% elif status.code == 100%}
+		<span class="badge badge-info ">{{status.description}}</span>
+		{% else %}
+		<span class="badge badge-danger ">{{status.description}}</span>
+		{% endif%}
+		
+		{% endfor%}
+	</div>
+</div>
+{% endfor %}
+
+{% endblock content %}

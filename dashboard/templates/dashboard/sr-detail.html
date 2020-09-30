@@ -1,0 +1,65 @@
+
+{% extends "dashboard/base_extended.html" %}
+{% block title %}
+<title>Story Detail</title>
+{% endblock title%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="row">
+	<div class="col-sm-10 offset-md-1">
+		<div class="card">
+			<div class="card-header">
+				<span class="badge badge-primary">{{object.project.code}}-{{object.id}} 
+				</span>
+				<h5>{{object.title}}</h5>
+				
+			</div>
+			<div class="card-body">
+				<form>	
+					
+
+					<div class="form-group row">
+						<label for="description" class="col-sm-2 col-form-label">Description</label>
+						<div class="col-sm-10">
+							<textarea class="form-control" id="exampleFormControlTextarea1" readonly>{{object.description}}</textarea>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="inputEmail3" class="col-sm-2 col-form-label">Assigner</label>
+						<div class="col-sm-10">
+
+							<input type="email" readonly class="form-control" id="inputEmail3" placeholder="Email" value ="{{object.assigned_by}}">
+
+							
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="inputEmail3" class="col-sm-2 col-form-label">Assignee</label>
+						<div class="col-sm-10">
+							<input type="email" readonly class="form-control" id="inputEmail3" placeholder="Email" value="{{object.assigned_to}}">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="inputEmail3" class="col-sm-2 col-form-label">Project</label>
+						<div class="col-sm-10">
+							<input type="email" readonly class="form-control" id="inputEmail3" placeholder="Email" value="{{object.project}}">
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="inputEmail3" class="col-sm-2 col-form-label">Status</label>
+						<div class="col-sm-10">
+							<input type="email" readonly class="form-control" id="inputEmail3" placeholder="Email" value="{{object.status}}">
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
